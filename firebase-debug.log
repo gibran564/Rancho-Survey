@@ -1,0 +1,41 @@
+[debug] [2026-03-04T01:14:33.278Z] ----------------------------------------------------------------------
+[debug] [2026-03-04T01:14:33.283Z] Command:       C:\Users\gibra\.bun\bin\bun.exe C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-03-04T01:14:33.284Z] CLI Version:   15.8.0
+[debug] [2026-03-04T01:14:33.284Z] Platform:      win32
+[debug] [2026-03-04T01:14:33.284Z] Node Version:  v24.3.0
+[debug] [2026-03-04T01:14:33.289Z] Time:          Tue Mar 03 2026 19:14:33 GMT-0600 (hora estándar central)
+[debug] [2026-03-04T01:14:33.289Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\gibra\Documents\rancho-survey
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-03-04T01:15:02.468Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-04T01:15:02.469Z] > authorizing via signed-in user (cegibran@gmail.com)
+[debug] [2026-03-04T01:15:02.471Z] Checked if tokens are valid: true, expires at: 1772590461500
+[debug] [2026-03-04T01:15:02.472Z] Checked if tokens are valid: true, expires at: 1772590461500
+[debug] [2026-03-04T01:15:02.473Z] Failed to make request: Attempted to assign to readonly property.
+[debug] [2026-03-04T01:15:02.475Z] FirebaseError: Failed to make request: Attempted to assign to readonly property.
+    at request (C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\apiv2.js:146:31)
+    at async getProjectPage (C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\management\projects.js:287:41)
+    at async getFirebaseProjectPage (C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\management\projects.js:304:29)
+    at async selectProjectInteractively (C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\management\projects.js:150:47)
+    at async doSetup (C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\init\features\project.js:56:45)
+    at async init (C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\init\index.js:92:21)
+    at async initAction (C:\Users\gibra\.bun\install\global\node_modules\firebase-tools\lib\commands\init.js:231:22)
+    at processTicksAndRejections (native:7:39)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.

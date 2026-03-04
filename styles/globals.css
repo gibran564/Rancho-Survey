@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #ffffff;
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, rgba(45,122,45,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,90,43,0.04) 0%, transparent 60%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d7a2d;
+  border-radius: 3px;
+}
+
+/* Scale button styles */
+.scale-btn {
+  @apply w-11 h-11 rounded-lg border-2 font-bold text-base transition-all duration-200 flex items-center justify-center cursor-pointer;
+}
+.scale-btn.active {
+  @apply bg-rancho-green border-rancho-green-light text-white shadow-lg;
+  box-shadow: 0 0 16px rgba(45,122,45,0.5);
+  transform: scale(1.1);
+}
+.scale-btn.inactive {
+  @apply bg-rancho-card border-rancho-border text-gray-400;
+}
+.scale-btn.inactive:hover {
+  @apply border-rancho-green text-green-400;
+}
+
+/* NPS button */
+.nps-btn {
+  @apply w-10 h-10 rounded-lg border-2 font-bold text-sm transition-all duration-200 flex items-center justify-center cursor-pointer;
+}
+.nps-btn.active {
+  @apply text-white border-rancho-green-light;
+  box-shadow: 0 0 12px rgba(45,122,45,0.6);
+  transform: scale(1.1);
+}
+
+/* Option button */
+.opt-btn {
+  @apply px-5 py-2.5 rounded-lg border-2 font-semibold text-sm transition-all duration-200 cursor-pointer;
+}
+.opt-btn.active {
+  @apply bg-rancho-green border-rancho-green-light text-white;
+  box-shadow: 0 0 16px rgba(45,122,45,0.4);
+}
+.opt-btn.inactive {
+  @apply bg-rancho-card border-rancho-border text-gray-300;
+}
+.opt-btn.inactive:hover {
+  @apply border-rancho-green text-green-400;
+}
+
+/* Input styles */
+.rancho-input {
+  @apply w-full bg-rancho-card2 border border-rancho-border rounded-lg px-4 py-3 text-white text-sm resize-none outline-none transition-all duration-200;
+  font-family: 'Barlow', sans-serif;
+}
+.rancho-input:focus {
+  @apply border-rancho-green;
+  box-shadow: 0 0 0 2px rgba(45,122,45,0.2);
+}
+.rancho-input::placeholder {
+  @apply text-gray-600;
+}
+
+/* Card styles */
+.section-card {
+  @apply bg-rancho-card rounded-2xl p-6 border border-rancho-border;
+  position: relative;
+  overflow: hidden;
+}
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2d7a2d, #3da03d, #2d7a2d);
+}
+
+/* Stat card */
+.stat-card {
+  @apply bg-rancho-card rounded-xl p-5 border border-rancho-border;
+}
+
+/* Progress bar animation */
+@keyframes slideIn {
+  from { width: 0; }
+  to { width: var(--progress); }
+}
+
+.progress-fill {
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+/* Fade in */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+/* Glow button */
+.glow-btn {
+  background: linear-gradient(135deg, #2d7a2d, #3da03d);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(45,122,45,0.4);
+}
+.glow-btn:hover {
+  box-shadow: 0 4px 30px rgba(45,122,45,0.7);
+  transform: translateY(-1px);
+}
+.glow-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* NPS colors */
+.nps-detractor { background: rgba(220,38,38,0.2); border-color: #dc2626; }
+.nps-detractor.active { background: #dc2626; }
+.nps-passive { background: rgba(234,179,8,0.2); border-color: #eab308; }
+.nps-passive.active { background: #eab308; color: #000; }
+.nps-promoter { background: rgba(45,122,45,0.2); border-color: #2d7a2d; }
+.nps-promoter.active { background: #2d7a2d; }
