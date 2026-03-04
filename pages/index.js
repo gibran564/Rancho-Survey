@@ -8,25 +8,45 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 // ──────────────────────────────────────────────
 
 function ScaleRating({ value, onChange, max = 5, labels }) {
+  const [hovered, setHovered] = useState(null);
+  const active = hovered ?? value;
+
   return (
-    <div>
-      <div className="flex gap-2 mt-3 flex-wrap">
+    <div className="mt-3">
+      <div className="flex gap-1">
         {Array.from({ length: max }, (_, i) => i + 1).map(n => (
           <button
             key={n}
             type="button"
             onClick={() => onChange(n)}
-            className={`scale-btn ${value === n ? 'active' : 'inactive'}`}
+            onMouseEnter={() => setHovered(n)}
+            onMouseLeave={() => setHovered(null)}
+            onTouchStart={() => setHovered(n)}
+            onTouchEnd={() => setHovered(null)}
+            className="text-4xl transition-all duration-150 focus:outline-none"
+            style={{
+              color: n <= active ? '#f59e0b' : '#374151',
+              transform: n <= active ? 'scale(1.15)' : 'scale(1)',
+              filter: n <= active ? 'drop-shadow(0 0 6px rgba(245,158,11,0.5))' : 'none',
+            }}
+            aria-label={`${n} estrellas`}
           >
-            {n}
+            ★
           </button>
         ))}
       </div>
       {labels && (
-        <div className="flex justify-between mt-1 text-xs text-gray-500 px-1">
-          <span>{labels[0]}</span>
-          <span>{labels[1]}</span>
-        </div>
+        <p className="text-xs text-gray-500 mt-2">
+          <span className="text-amber-400 font-semibold">★</span> {labels[0]}
+          <span className="mx-2 text-gray-600">·</span>
+          <span className="text-amber-400 font-semibold">{'★'.repeat(max)}</span> {labels[1]}
+        </p>
+      )}
+      {value && (
+        <p className="text-xs text-amber-400 font-semibold mt-1">
+          {value === 1 ? '😞 ' : value === 2 ? '😕 ' : value === 3 ? '😐 ' : value === 4 ? '😊 ' : '🤩 '}
+          {['', 'Muy insatisfecho', 'Insatisfecho', 'Regular', 'Bueno', 'Excelente'][value]}
+        </p>
       )}
     </div>
   );
