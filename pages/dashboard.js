@@ -169,7 +169,8 @@ function computeAnalytics(responses) {
 // Export to Excel (XLSX)
 // ──────────────────────────────────────────────
 async function exportToExcel(responses, analytics) {
-  const XLSX = (await import('xlsx')).default;
+  const XLSXModule = await import('xlsx');
+  const XLSX = XLSXModule.default ?? XLSXModule;
 
   const wb = XLSX.utils.book_new();
 
